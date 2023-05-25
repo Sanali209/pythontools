@@ -28,6 +28,12 @@ class AnotationClass:
     def __init__(self) -> None:
         self.label = ""
 
+    def __repr__(self):
+        return self.label
+
+    def __str__(self):
+        return self.label
+
 
 class AnotationJob:
     def __init__(self) -> None:
@@ -35,7 +41,7 @@ class AnotationJob:
         self.jobfolder = "/rawdb/AJobs/quality"
         self.anotationclassSaveFile = "anotationclass.json"
         self.anotationItemsSaveFile = "anotationitems.json"
-        self.transformerPipelineName = "default"
+        self.transformerPipelineName = "image-classification"
         self.transformerPipeline = pipeline(self.transformerPipelineName)
 
         self.importPath = ""
@@ -62,7 +68,7 @@ class AnotationJob:
 
         import json
         with open(self.jobfolder + "/" + self.anotationclassSaveFile, 'w') as outfile:
-            json.dump(JsonList, outfile)
+            json.dump(JsonList, outfile, indent=4)
 
     def loadAnotationsClasses(self):
         import json
@@ -82,7 +88,7 @@ class AnotationJob:
 
         import json
         with open(self.jobfolder + "/" + self.anotationItemsSaveFile, 'w') as outfile:
-            json.dump(JsonList, outfile)
+            json.dump(JsonList, outfile, indent=4)
 
     def loadAnotationsItems(self):
         import json
@@ -94,7 +100,7 @@ class AnotationJob:
                 nanotation = AnotationItem()
                 nanotation.path = cannot
                 self.anotationItems.append(nanotation)
-    def NextAnotationItem(self):
+    def NextAnotationItem(self)->'AnotationItem':
         for item in self.anotationItems:
             if not item.anotated and not item.passed:
                 return item
@@ -105,13 +111,18 @@ class AnotationItem:
     def __init__(self) -> None:
         self.path = ""
         self.anotations = []
+        self.predictions = []
         self.anotated = False
         self.passed = False
 
-curentJob = AnotationJob()
-curentJob.loadAnotationsClasses()
-curentJob.loadAnotationsItems()
+    def anotateLabel(self, label):
+        self.anotations.append({"label": label})
+        self.anotated = True
 
-curentItem = curentJob.NextAnotationItem()
 
-print(len(curentJob.anotations))
+
+    def passItem(self):
+        self.passed = True
+
+
+
