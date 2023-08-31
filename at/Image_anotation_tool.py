@@ -2,6 +2,7 @@ import os
 import shutil
 import uuid
 import hashlib
+import json
 from PIL import Image
 
 from SLM.appGlue.iotools.pathtools import get_files
