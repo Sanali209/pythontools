@@ -10,6 +10,8 @@ from IPython.display import display
 #import tqdm
 from tqdm.notebook import tqdm
 
+
+
 class ItemAnotation:
     def __init__(self,label='') -> None:
         self.label = label
@@ -75,10 +77,9 @@ class AnotationJob:
         jsonPath = os.path.join(self.repoPath,self.jsonName)
         jsondata = {}
         jsondata["name"] = self.name
-        jsondata["cursor"] = self.cursor
-        jsondata['note']=self.note
+        jsondata["AnotationChoices"] = []
         for item in self.items:
-            jsondata["items"].append({"id":str(item.id),"path":item.path,"contentMD5":item.contentMD5,"anotation":item.anotation.label,"note":item.note})
+            jsondata["items"].append({"id":str(item.id),"path":item.path,"contentMD5":item.contentMD5,"note":item.note})
         jsondata["AnotationChoices"] = []
         for choise in self.AnotationChoices:
             jsondata["AnotationChoices"].append({"label":choise.label})
