@@ -81,7 +81,7 @@ class AnotationJob:
         jsondata["AnotationChoices"] = []
         jsondata["items"]=[]
         for item in self.items:
-            jsondata["items"].append({"id":str(item.id),"path":item.path,"contentMD5":item.contentMD5,"note":item.note})
+            jsondata["items"].append({"id":str(item.id),"path":item.path,"contentMD5":item.contentMD5,"note":item.note,"anotation":""})
         jsondata["AnotationChoices"] = []
         for choise in self.AnotationChoices:
             jsondata["AnotationChoices"].append({"label":choise.label})
