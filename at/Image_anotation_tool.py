@@ -50,7 +50,7 @@ class AnotationJob:
             anotation.label = choise_name
 
             
-        file_paths = get_files(sourcePath),["*.jpg","*.png","*.jpeg"]
+        file_paths = get_files(sourcePath,["*.jpg","*.png","*.jpeg"])
         imageprefix = "image"
         counter = 0
         for file_path in tqdm(file_paths):
