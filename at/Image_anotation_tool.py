@@ -147,39 +147,38 @@ class JupiterAppGui:
     def Inithialize(self):
         self.job.Load()
         self.job.seek_to_not_anoated()
-        #horizontal layout
-        self.hlayout = widgets.HBox()
-        # vertical layout
-        self.vlayout = widgets.VBox()
+        
+        
+        
+        
         # image widget
         self.image = widgets.Image()
-        self.vlayout.children.append(self.image)
+        
         # anotation widget
         self.anotation = widgets.Dropdown(options=[choise.label for choise in self.job.AnotationChoices])
-        self.vlayout.children.append(self.anotation)
+    
         self.noteWidget = widgets.Textarea()
-        self.hlayout.children.append(self.vlayout)
-        self.hlayout.children.append(self.noteWidget)
+        vl =widgets.VBox([self.anotation,self.noteWidget])
         # vertical layout
         self.vlayout2 = widgets.VBox()
         # previous button
         self.previous = widgets.Button(description="Previous")
         self.previous.on_click(self.previous_clicked)
-        self.vlayout2.children.append(self.previous)
+        
         # next button
         self.next = widgets.Button(description="Next")
         self.next.on_click(self.next_clicked)
-        self.vlayout2.children.append(self.next)
+        
         # pass button
         self.passed = widgets.Button(description="Pass")
         self.passed.on_click(self.passed_clicked)
-        self.vlayout2.children.append(self.passed)
+        
         # save button
         self.save = widgets.Button(description="Save")
         self.save.on_click(self.save_clicked)
-        self.vlayout2.children.append(self.save)
-        self.hlayout.children.append(self.vlayout2)
-        self.hlayout.children.append(self.vlayout)
+        
+        
+        
         
     
     def run(self):
