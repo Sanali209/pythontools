@@ -160,7 +160,7 @@ class JupiterAppGui:
         self.noteWidget = widgets.Textarea()
         vl =widgets.VBox([self.anotation,self.noteWidget])
         # vertical layout
-        self.vlayout2 = widgets.VBox()
+        
         # previous button
         self.previous = widgets.Button(description="Previous")
         self.previous.on_click(self.previous_clicked)
@@ -176,6 +176,7 @@ class JupiterAppGui:
         # save button
         self.save = widgets.Button(description="Save")
         self.save.on_click(self.save_clicked)
+        vl2 = widgets.VBox([self.previous,self.next,self.passed,self.save])
         
         
         
@@ -190,7 +191,9 @@ class JupiterAppGui:
         # previous | next | pass| save
         # -----------------------------------
         self.update()
-        display(self.hlayout)
+        display(self.image)
+        display(self.vl)
+        display(self.vl2)
         
     def update(self):
         # update gui
