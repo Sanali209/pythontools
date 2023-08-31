@@ -31,7 +31,7 @@ class ImageItem:
         # load image by pilow
         # calculate md5
         image = Image.open(self.path)
-        self.contentMD5  = str(hashlib.md5(image.tobytes()))
+        self.contentMD5  = hashlib.md5(image.tobytes()).hexdigest()
         
 class AnotationJob:
     def __init__(self) -> None:
