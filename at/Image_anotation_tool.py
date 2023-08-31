@@ -46,7 +46,9 @@ class AnotationJob:
             os.mkdir(repoPath)
         self.AnotationChoices.clear()
         for choise_name in choises:
-            self.AnotationChoices.append(ItemAnotation(choise_name))
+            anotation = ItemAnotation()
+            anotation.label = choise_name
+
             
         file_paths = get_files(sourcePath),["*.jpg","*.png","*.jpeg"]
         imageprefix = "image"
