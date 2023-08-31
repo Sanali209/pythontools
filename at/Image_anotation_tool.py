@@ -24,7 +24,7 @@ class ImageItem:
         self.passed = False
         self.path = ""
         self.contentMD5 = ""
-        self.anotation:ItemAnotation = None
+        self.anotation:ItemAnotation = []
         self.note = ""
     
     def CalculateContentMD5(self):
