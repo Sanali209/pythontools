@@ -1,6 +1,6 @@
 from tqdm import tqdm
 
-from SLM.FuncModule import get_files
+
 
 
 class PathManagerSys:

@@ -11,8 +11,8 @@ from IPython.display import display
 from tqdm.notebook import tqdm
 
 class ItemAnotation:
-    def __init__(self) -> None:
-        self.label = ""
+    def __init__(self,label='') -> None:
+        self.label = label
 
 class ImageItem:
 
