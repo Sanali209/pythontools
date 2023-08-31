@@ -78,6 +78,7 @@ class AnotationJob:
         jsondata = {}
         jsondata["name"] = self.name
         jsondata["AnotationChoices"] = []
+        jsondata["items"]=[]
         for item in self.items:
             jsondata["items"].append({"id":str(item.id),"path":item.path,"contentMD5":item.contentMD5,"note":item.note})
         jsondata["AnotationChoices"] = []
@@ -92,7 +93,6 @@ class AnotationJob:
         with open(jsonPath,"r",encoding="utf-8") as f:
             jsondata = json.load(f)
             self.name = jsondata["name"]
-            self.cursor = jsondata["cursor"]
             self.items.clear()
             for item in jsondata["items"]:
                 imageitem = ImageItem()
