@@ -7,6 +7,8 @@ from PIL import Image
 from SLM.appGlue.iotools.pathtools import get_files
 from ipywidgets import widgets
 from IPython.display import display
+#import tqdm
+from tqdm.notebook import tqdm
 
 class ItemAnotation:
     def __init__(self) -> None:
@@ -49,7 +51,7 @@ class AnotationJob:
         file_paths = get_files(sourcePath),["*.jpg","*.png","*.jpeg"]
         imageprefix = "image"
         counter = 0
-        for file_path in file_paths:
+        for file_path in tqdm(file_paths):
             
             item = ImageItem()
             item.path = file_path
